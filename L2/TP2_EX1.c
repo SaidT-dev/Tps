@@ -16,7 +16,7 @@ bool testTri(int T[], int n){
 
 bool existVal(int T[], int n, int val){
     if(!testTri(T, n)){
-        printf("Le tableau n'st pas trie");
+        printf("Le tableau n'est pas trie\n");
         return false;
     } else {
         bool exist = false;
@@ -26,6 +26,8 @@ bool existVal(int T[], int n, int val){
             int mid = (debut + fin)/2;
             if(T[mid] == val){
                 exist = true;
+                return true;
+                
             } else if(T[mid] > val){
                 fin = mid-1;
             } else {
@@ -38,27 +40,16 @@ bool existVal(int T[], int n, int val){
 
 int occVal(int T[], int n, int val){
     if(!testTri(T, n)){
-        printf("Le tableau n'st pas trie");
+        printf("Le tableau n'est pas trie\n");
         return 0;
     } else {
-        if(existVal(T, n, val)){
-            int occ = 0;
-            int debut = 0;
-            int fin = n-1;
-            while(debut <= fin){
-                int mid = (debut + fin)/2;
-                if(T[mid] == val){
-                    occ++;
-                } else if(T[mid] > val){
-                    fin = mid-1;
-                } else {
-                    debut = mid + 1;
-                }
+        int occ = 0;
+        for (int i = 0; i < n; i++) {
+            if (T[i] == val) {
+                occ++;
             }
-            return occ;
-        } else {
-            return 0;
-        } 
+        }
+        return occ;
     }
 }
 
@@ -66,7 +57,7 @@ int longSeq(int T[], int n){
     if(testTri(T,n)){
         int maxSeq = 1;
         int currentSeq = 1;
-        for(int i = 0; i < n; i++){
+        for(int i = 1; i < n; i++){
             if(T[i] == T[i-1] + 1 ){
                 currentSeq++;
             } else {
@@ -76,11 +67,9 @@ int longSeq(int T[], int n){
                 currentSeq = 1;
             }
         }
-        
         return maxSeq;
     } else {
         printf("Le tableau n'st pas trie");
-        return 0;
     }
 }
 
@@ -112,7 +101,7 @@ int main(){
     printf("La valeur %d apparait %d fois dans le tableau.\n", val, occurrences);
     //Qestion 4
     int longestSequence = longSeq(T, n);
-    printf("La plus longue sequence de valeurs identiques a une longueur de %d.\n", longestSequence);
+    printf("La plus longue sequence a une longueur de %d.\n", longestSequence);
 
     return 0;
 }

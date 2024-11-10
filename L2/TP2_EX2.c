@@ -132,7 +132,8 @@ int main() {
     int T1[n], T2[n], T3[n], T4[n], T5[n];
     for(int i = 0; i < n; i++){
         T1[i] = rand();
-        T2[i] = T1[i]; T3[i] = T1[i]; T4[i] = T1[i]; T5[i] = T1[i]; 
+        T2[i] = T1[i]; T3[i] = T1[i];
+         T4[i] = T1[i]; T5[i] = T1[i]; 
     }
     clock_t start, end;
     double second = 0;
